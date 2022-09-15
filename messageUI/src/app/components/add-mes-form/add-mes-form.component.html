@@ -1,0 +1,60 @@
+<br><br><br>
+  <div class="container form-area" [hidden]="submitted">
+    <form [formGroup]="fg" #mesForm="ngForm" (ngSubmit)="onMesCreate(mesForm.value)" >
+      <div class="row">
+        <h2>Напишите нам</h2>
+
+        <div class="input-group input-group-icon">
+          <input type="text" placeholder="Ваше имя" name="contactName" formControlName="contactName" ngModel [maxlength]="50"/>
+          <div *ngIf="p['contactName'].touched && p['contactName'].invalid" class="alert-danger">
+            <div *ngIf="p['contactName'].errors?.['required']">Введите имя!</div>
+          </div>
+          <div class="input-icon"><i class="fa fa-user"></i></div>
+        </div>
+
+        <div class="input-group input-group-icon">
+          <input type="text" placeholder="Ваш телефон" name="phone"  formControlName="phone" [imask]="phoneMask"  [unmask]="true" ngModel/>
+          <div *ngIf="p['phone'].touched && p['phone'].invalid" class="alert-danger">
+            <div *ngIf="p['phone'].errors?.['required']">Введите номер телефона!</div>
+            <div *ngIf="p['phone'].errors?.['pattern']">В номере телефона 10 цифр!</div>
+          </div>
+          <div class="input-icon"><i class="fa fa-phone"></i></div>
+        </div>
+
+        <div class="input-group input-group-icon">
+          <input type="email" placeholder="Ваш email"  name="email"  formControlName="email"  ngModel email [maxlength]="50"/>
+          <div *ngIf="p['email'].touched && p['email'].invalid" class="alert-danger">
+            <div *ngIf="p['email'].errors?.['required']">Введите вашу почту</div>
+            <div *ngIf="p['email'].errors?.['pattern']">Почта введена неверно</div>
+          </div>
+          <div class="input-icon"><i class="fa fa-envelope"></i></div>
+        </div>
+
+        <div class="normal">Тема сообщения:</div>
+        <div class="input-group input-group-icon">
+          <select name="title" formControlName="title" ngModel>
+            <option *ngFor="let option of messageSubjectList$|async" [value]="option.title"  >
+              {{option.title}}
+            </option>
+          </select>
+          <div *ngIf="p['title'].touched && p['title'].invalid" class="alert-danger">
+            <div *ngIf="p['title'].errors?.['required']">Выберите тему сообщения</div>
+          </div>
+        </div>
+
+        <div class="normal">Сообщение:</div>
+        <div class="input-group input-group-icon">
+          <textarea  type="text" name="message_text"  formControlName="message_text" ngModel [maxlength]="300"></textarea>
+          <div *ngIf="p['message_text'].touched && p['message_text'].invalid" class="alert-danger">
+            <div *ngIf="p['message_text'].errors?.['required']">Введите сообщение</div>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary" type="submit" [disabled]="!fg.valid">Отправить</button>
+    </form>
+  </div>
+
+
+  
+
+  

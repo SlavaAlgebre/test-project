@@ -1,0 +1,10 @@
+<div *ngIf="show">
+  <br><br><br>
+    <div *ngFor="let mes of messages">
+      <div class="mes">Ваше сообщение №{{ mes.id }} "{{ mes.message_text }}" отправлено!</div>
+
+    </div>
+
+</div>
+
+<app-add-mes-form (messagesUpdated)="updateMesList()"></app-add-mes-form>

@@ -1,0 +1,14 @@
+.mes {
+    border-radius: 5px;
+    color: #fff;
+    width: 500px;
+    text-align: center;
+    font-family: verdana, 'open sans', sans-serif;
+    padding: 10px 14px 10px 44px;
+    position: relative;
+    box-shadow: 0px 1px 5px #999;
+    background-color: #8a9bab;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
