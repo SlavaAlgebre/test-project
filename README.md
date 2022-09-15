@@ -1,1 +1,2 @@
-# test-project
+WebApi - серверная часть
+messageUI - клиентская часть
